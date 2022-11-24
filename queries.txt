@@ -1,0 +1,105 @@
+Table creation
+
+1. User : Admin,Police
+2. Admin - manages police accounts: add,update,delete police records
+3. Police - manages and access crimes - criminals involved
+4. Crime - id,evidence,details - location,time
+5. Police - fname,lname,id,designation,station,
+
+
+CREATE TABLE POLICE (
+	f_name text,
+	l_name text,
+	p_id text CHECK (p_id like 'P%%') PRIMARY KEY,
+	designation text,
+	station text,
+	dob date,
+	doj date,
+	age integer,
+	contact_no bigint,
+	pwd text,
+	gender character(1),
+	image bytea
+)
+
+CREATE TABLE CRIMINAL (
+	f_name text,
+	l_name text,
+	mother_n text,
+	father_n text,
+	dob date,
+	address text,
+	identification text,
+	cr_id text CHECK (cr_id like 'CR%%') PRIMARY KEY,
+	image bytea
+)
+
+CREATE TABLE R_POLICE (
+	f_name text,
+	l_name text,
+	p_id text CHECK (p_id like 'P%%') PRIMARY KEY,
+	designation text,
+	station text,
+	dob date,
+	doj date,
+	age integer,
+	contact_no bigint,
+	pwd text,
+	gender character(1),
+	image bytea
+)
+
+CREATE TABLE CRIME (
+	case_no text check(case_no like 'C%%'),
+	description text,
+	vicinity text,
+	evidence text,
+	c_date date,
+	p_id text,
+	Foreign Key(p_id) REFERENCES police(p_id),
+	PRIMARY KEY(case_no)
+)
+
+CREATE TABLE CR_CRIMINAL (
+	case_no text,
+	cr_id text,
+	PRIMARY KEY(case_no,cr_id),
+	Foreign Key(cr_id) REFERENCES criminal(cr_id),
+	Foreign Key(case_no) REFERENCES crime(case_no) ON DELETE CASCADE
+)
+ 
+
+
+
+CREATE TABLE VICTIMS (
+	case_no text,
+	c_victims text UNIQUE,
+	Foreign Key(case_no) REFERENCES CRIME(case_no) ON DELETE CASCADE,
+	PRIMARY KEY(case_no,c_victims)
+	)
+	
+ALTER TABLE criminal ADD image bytea;
+PROCEDURE
+
+create or replace function checkPID() returns trigger as $case_trigger$ 
+DECLARE 
+p record;
+i smallint := 0; 
+BEGIN 
+for p in select p_id from crime loop 
+if new.p_id = p.p_id then 
+i := i + 1;
+ 	end if; 
+end loop; 
+	
+if i > 2 then 
+delete from crime where case_no = new.case_no;
+RAISE NOTICE 'NO MORE THAN 2 CASES FOR ONE COP!'; 
+end if; 
+RETURN new; 
+end;
+$case_trigger$ LANGUAGE plpgsql;
+
+TRIGGER
+
+create trigger checkPID after insert on crime for each row execute procedure checkPID();
