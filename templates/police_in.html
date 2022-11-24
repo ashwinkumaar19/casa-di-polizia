@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD</title>
+    <!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="../static/images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="../static/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="../static/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="../static/vendor/animate/animate.css">
+    <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="../static/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="../static/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="../static/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="../static/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="../static/css/util.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/main.css">
+    <!--===============================================..================================================-->
+</head>
+<body>
+    <div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-t-50 p-b-90 w-100 m-l-250 m-r-250">
+				<form class="login100-form validate-form flex-sb flex-w flex-column" method="POST">
+					<span class="login100-form-title p-b-51">
+						DASHBOARD
+					</span>
+
+                    <div class="d-flex justify-content-center align-items-center  flex-column">
+                        <div class ="d-flex justify-content-center align-items-center w-100 m-b-16" >
+                        <div class="wrap-input100 w-70 m-r-20 mb-0">
+                            <input class="input100" type="text" name="caseNo" placeholder="ENTER CASE NUMBER">
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="container-login100-form-btn w-25 mt-0">
+                            <button class="login100-form-btn" type="submit" name="search_button" value="search">
+                                SEARCH
+                            </button>
+                        </div>
+                        </div>
+                        <div>{{c_msg}}</div>
+                        
+                    </div>
+
+                    <div class="d-flex w-100 mt-5">
+                        <div class="w-50 mr-3">
+                            <span class="login100-form-title">
+                                CRIME
+                            </span>
+
+                            <div class="container-login100-form-btn m-t-17">
+                                <button class="login100-form-btn" onClick="parent.location='add_crime.html'" type="button">
+                                    ADD CRIME
+                                </button>
+                            </div>
+
+                            <div class="container-login100-form-btn m-t-17">
+                                <button class="login100-form-btn" onClick="parent.location='del_crime.html'" type="button">
+                                    DELETE CRIME
+                                </button>
+                            </div>
+                        </div>
+                        <div class="w-50 ml-3">
+                            <span class="login100-form-title">
+                                CRIMINAL
+                            </span>
+
+                            <div class="container-login100-form-btn m-t-17">
+                                <button class="login100-form-btn" onClick="parent.location='add_criminal.html'" type="button">
+                                    ADD CRIMINAL
+                                </button>
+                            </div>
+
+                            <div class="container-login100-form-btn m-t-17">
+                                <button class="login100-form-btn" onClick="parent.location='del_criminal.html'" type="button">
+                                    DELETE CRIMINAL
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-100">
+                        <div class="container-login100-form-btn m-t-17">
+                            <button class="login100-form-btn" type="submit" name="search_button" value="analysis">
+                                ANALYSIS
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="w-100">
+                        <div class="container-login100-form-btn mt-5">
+                            <button class="login100-form-btn" style="background: red !important;"  type="submit" name="search_button" value="l" >
+                                LOGOUT
+                            </button>
+                        </div>
+                    </div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="../static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/bootstrap/js/popper.js"></script>
+	<script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/daterangepicker/moment.min.js"></script>
+	<script src="../static/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/js/main.js"></script>
+    
+</body>
+</html>       
